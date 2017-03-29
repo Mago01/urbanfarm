@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <title>login</title>
+   <meta charset="UTF-8">
+	 {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
+ </head>
+ <body>
+  {% if messages %}
+  {% for message in messages %}
+          <div id="warning" style='background-color:red'>
+            <p>{{message}}</p>
+          </div>
+{% endfor %}
+{% endif %}
+ 	<div id="log">
+  <form action='/main/login' method='post'>
+    <fieldset>
+  {% csrf_token %}
+    <legend>Login</legend>
+ 		<label>email:</label>
+ 		<input type="email" name="email">
+ 		<label>Password:</label>
+ 		<input type="password" name="pass" placeholder="password">
+ 		<input id="sub" type='submit' name='submit'>
+ 	  </fieldset>
+    </form>
+ 	<div id="register">
+  <form action="/main/register" method='post'>
+ 	  <fieldset>
+    {% csrf_token %}
+    <legend>Register</legend>
+ 		<label>First Name:</label>
+ 		<input type="text" name="first_name" placeholder="first name">
+ 		<label>Last Name:</label>
+ 		<input type="text" name="last_name" placeholder="last name">
+ 		<label>email:</label>
+ 		<input type="email" name="email" placeholder="email">
+ 		<label>Password:</label>
+ 		<input type="password" name="pass" placeholder="password">
+ 		<label>Confirm Password:</label>
+ 		<input type="password" name="cpass" placeholder="password">
+ 		<input type='submit' name='submit'>
+ 	  </fieldset>
+    </form>
+ 	</div>
+ </body>

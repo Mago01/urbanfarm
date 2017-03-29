@@ -1,0 +1,9 @@
+* {
+	padding:0px;
+	margin:0px;
+}
+.director {
+	width: 100px;
+	display:inline-block;
+	vertical-align: top;
+}

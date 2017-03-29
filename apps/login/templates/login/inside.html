@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <title>enter the wall</title>
+   <meta charset="UTF-8">
+	 {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
+ </head>
+ <body>
+ 	<h1>Welcome {{request.session.user}}!</h1>
+ 	<form>
+ 		<textarea name="secret" placeholder="What's your secret?  I wont tell..."></textarea>
+ 	</form>
+ 
+ </body>
+ </html>
