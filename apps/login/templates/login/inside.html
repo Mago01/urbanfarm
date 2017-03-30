@@ -7,10 +7,15 @@
   <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
  </head>
  <body>
+ 	<div class='navkey'>
+		<a href='/home'>Home</a>
+		<a href='/farm'>MyFarm</a>
+		<a href='/farm/shop'>Shop</a>
+		<a href='/logout'>Logout</a>
+	</div>
  	<h1>Welcome {{request.session.user}}!</h1>
- 	<form>
- 		<textarea name="secret" placeholder="What's your secret?  I wont tell..."></textarea>
- 	</form>
+<a href="/farm/shop">shop</a>
+<a href="/farm">my farm</a>
  
  </body>
  </html>

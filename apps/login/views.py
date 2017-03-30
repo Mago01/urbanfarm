@@ -11,19 +11,19 @@ def login (request):
 		return redirect('/')
 	request.session['user']=result['user'].first_name
 	request.session['user_id']=result['user'].id
-	return redirect('/done')
+	return redirect('/home')
 def register(request):
 	result = User.objects.register(request.POST.copy())
 	if 'error'in result:
 		for error in result['error']:
 			messages.add_message(request, messages.ERROR, error)
-		return redirect('/main')
+		return redirect('/')
 	request.session['user']=result['user'].first_name
 	request.session['user_id']=result['user'].id
-	return redirect('/done')
+	return redirect('/home')
 def logout (request):
 	request.session.clear()
 	return redirect('/')
-def done(request):
+def home(request):
 	return render(request,'login/inside.html')
 

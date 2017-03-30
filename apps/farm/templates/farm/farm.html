@@ -4,10 +4,17 @@
 	<title>Add a product to the farm!</title>
 	</head>
 <body>
+	<div class='navkey'>
+		<a href='/home'>Home</a>
+		<a href='/farm'>MyFarm</a>
+		<a href='/farm/shop'>Shop</a>
+		<a href='/logout'>Logout</a>
+	</div>
 	<h3>{{request.session.user}}'s Items for Sale</h3>
 	<br><br>
 	{% for farm in my_farm %}
 	{{farm.name}}
 	{% endfor %}
+	<button><a href='/farm/add'>List new item</a></button>
  </body>
  </html>

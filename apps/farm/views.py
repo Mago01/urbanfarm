@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Farm
-from ..user.models import User
+from ..login.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def farm (request, id):
-
+def farm (request):
+	id = request.session['user_id']
 	context = {
 		"my_farm": Farm.objects.filter(id=id)
 	}
@@ -17,24 +17,24 @@ def add (request):
 
 def create (request):
 
-    if len(request.POST['name']) < 1:
-        messages.add_message(request, messages.WARNING, "Item name cannot be blank.")
-        return redirect('/farm/add')
-    if len(request.POST['description']) < 15:
-        messages.add_message(request, messages.WARNING, "Description must be more than 15 characters.")
-        return redirect('/farm/add')
+	if len(request.POST['name']) < 1:
+		messages.add_message(request, messages.WARNING, "Item name cannot be blank.")
+		return redirect('/farm/add')
+	if len(request.POST['description']) < 15:
+		messages.add_message(request, messages.WARNING, "Description must be more than 15 characters.")
+		return redirect('/farm/add')
 
-    x = User.objects.get(id=request.session['user_id'])
-    Farm.objects.create(name=request.POST['name'], description=request.POST['description'], seller = x)
+	x = User.objects.get(id=request.session['user_id'])
+	Farm.objects.create(name=request.POST['name'], description=request.POST['description'], seller = x)
 
-    return redirect('/farm')
+	return redirect('/farm')
 
 def shop(request):
 	if not 'user' in request.session:
-    return redirect('/')
+		return redirect('/')
 
-	id = request.session['user']
-	farm_list = Farm.objects.exclude(id=id)
+	id = request.session['user_id']
+	farm_list = Farm.objects.all()
 	page = request.GET.get('page', 1)
 	paginator = Paginator(farm_list, 6)
 
