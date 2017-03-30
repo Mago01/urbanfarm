@@ -2,10 +2,16 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Farm
 from ..user.models import User
+def farm (request, id):
+
+	context = {
+		"my_farm": Farm.objects.filter(id=id)
+	}
+
+	return render(request, 'farm/farm.html', context)
 
 def add (request):
-
-	return render(request, 'farm/add.html')
+    return render(request, 'farm/add.html')
 
 def create (request):
 
@@ -21,11 +27,7 @@ def create (request):
 
     return redirect('/farm')
 
+def shop (request):
+    pass
+    
 
-def farm (request, id):
-
-	context = {
-		"my_farm": Farm.objects.filter(id=id)
-	}
-
-	return render(request, 'farm/farm.html', context)
