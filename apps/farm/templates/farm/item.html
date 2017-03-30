@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Featured items</title>
+</head>
+<body>
+  <div class='navkey'>
+  <a href='/home'>Home</a>
+  <a href='/farm'>MyFarm</a>
+  <a href='/farm/shop'>Shop</a>
+  <a href='/logout'>Logout</a>
+  </div>
+<style>
+  img {
+    max-height: 200px;
+  }
+</style>
+	{% for product in products %}
+	<img src="{{ product.image.url }}" alt="itemforsale"/>
+	<p>Item Name: {{product.name}}</p>
+	<p>Description: {{product.description}}</p>
+	<p>Unit Price: {{product.price}}</p>
+	<p>Available Units: {{product.unit}}</p>
+	<p>Seller: {{product.seller.first_name}}</p>
+	{% endfor %}
+</body>
+</html>

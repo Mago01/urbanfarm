@@ -5,6 +5,11 @@
     <title></title>
   </head>
   <body>
+  <style>
+    img {
+      max-height: 100px;
+    }
+  </style>
     <div class='navkey'>
     <a href='/home'>Home</a>
     <a href='/farm'>MyFarm</a>
@@ -21,7 +26,8 @@
         <tbody>
           {% for item in items %}
           <tr>
-            <td>{{ item.name }}</td>
+            <td><a href='/farm/item/{{ item.id }}'>{{ item.name }}</a></td>
+            <td><img src="{{ item.image.url }}" alt="" /></td>
           </tr>
           {% endfor %}
         </tbody>

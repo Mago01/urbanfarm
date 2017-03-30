@@ -3,11 +3,16 @@ from django.contrib import messages
 from .models import Farm
 from ..login.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django import forms
+from .forms import FarmImage
+from django.template import RequestContext
+from django.core.files.storage import FileSystemStorage
+from django.conf import settings
 
 def farm (request):
 	id = request.session['user_id']
 	context = {
-		"my_farm": Farm.objects.filter(id=id)
+		"my_farm": Farm.objects.filter(seller__id=id)
 	}
 
 	return render(request, 'farm/farm.html', context)
@@ -16,7 +21,8 @@ def add (request):
     return render(request, 'farm/add.html')
 
 def create (request):
-
+	print '*'*80
+	print request.FILES
 	if len(request.POST['name']) < 1:
 		messages.add_message(request, messages.WARNING, "Item name cannot be blank.")
 		return redirect('/farm/add')
@@ -24,19 +30,32 @@ def create (request):
 		messages.add_message(request, messages.WARNING, "Description must be more than 15 characters.")
 		return redirect('/farm/add')
 
-	x = User.objects.get(id=request.session['user_id'])
-	Farm.objects.create(name=request.POST['name'], description=request.POST['description'], seller = x)
+	if request.method == 'POST':
+		form = FarmImage(request.FILES)
+		if form.is_valid():
+			form.save()
+			return redirect('/home')
+	else:
+		form = FarmImage()
 
-	return redirect('/farm')
+	x = User.objects.get(id=request.session['user_id'])
+	print request.FILES
+	newimage = request.FILES['image']
+	newproduct = Farm.objects.create(name=request.POST['name'], description=request.POST['description'], type_food=request.POST['type_food'], unit=request.POST['unit'], price=request.POST['price'], image = newimage, seller = x)
+
+	return redirect('/farm', {
+        'form': form
+    }
+	)
 
 def shop(request):
 	if not 'user' in request.session:
 		return redirect('/')
 
 	id = request.session['user_id']
-	farm_list = Farm.objects.all()
+	farm_list = Farm.objects.exclude(seller__id=id)
 	page = request.GET.get('page', 1)
-	paginator = Paginator(farm_list, 6)
+	paginator = Paginator(farm_list, 4)
 
 	try:
 		items = paginator.page(page)
@@ -46,3 +65,10 @@ def shop(request):
 		items = paginator.page(paginator.num_pages)
 
 	return render(request, 'farm/saleitems.html', { 'items' : items})
+
+def item(request, id):
+	data = {
+	    "products" : Farm.objects.filter(id=id)
+	}
+
+	return render(request, 'farm/item.html', data)

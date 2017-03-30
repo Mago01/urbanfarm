@@ -4,6 +4,11 @@
 	<title>Add a product to the farm!</title>
 	</head>
 <body>
+	<style>
+		img {
+			max-height: 100px;
+		}
+	</style>
 	<div class='navkey'>
 		<a href='/home'>Home</a>
 		<a href='/farm'>MyFarm</a>
@@ -14,6 +19,9 @@
 	<br><br>
 	{% for farm in my_farm %}
 	{{farm.name}}
+	{% if farm.image %}
+		<img src="{{farm.image.url}}" alt="" />
+	{% endif %}
 	{% endfor %}
 	<button><a href='/farm/add'>List new item</a></button>
  </body>

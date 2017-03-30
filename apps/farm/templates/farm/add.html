@@ -11,8 +11,8 @@
 		<a href='/logout'>Logout</a>
 	</div>
 	<h3>List your item for sale!</h3>
-
-	<form action='#' method='POST'>
+	{% block content %}
+	<form enctype="multipart/form-data" action='/farm/create' method='POST'>
 	{% csrf_token %}
 		<p>Item name:</p>
 		<input type='name' name='name' id='name'>
@@ -31,7 +31,21 @@
 		</select>
 		<br>
 		<br>
+		<label for="unit">Unit(s):</label>
+		<input type="text" name="unit"/>
+		<br>
+		<br>
+		<label for="price">Price per Unit: $</label>
+		<input type="text" name="price"/>(USD)
+		<br>
+		<br>
+		<label for="image">Image Upload:</label>
+		<input id="image" type="file" name="image"/>
+		{{ form.image }}
+		<br>
+		<br>
 		<input id="submit" type='submit' value='Add to Farm'>
 	</form>
+	{% endblock %}
  </body>
  </html>

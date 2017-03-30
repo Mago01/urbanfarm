@@ -10,8 +10,6 @@ class UserManager(models.Manager):
 		for field in data:
 			if not EMAIL_REGEX.match(data['email']):
 				error.append(field+"email not valid.")
-			if len (data['hired'])==0:
-				error.append("Date hired can not be empty.")
 			if len(data['first_name'])<2:
 				error.append("First name can not be less then 2 characters long.")
 			if len(data['last_name'])<2:
