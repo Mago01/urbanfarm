@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<title>Add a product to the farm!</title>
+	</head>
+<body>
+	<h3>{{request.session.user}}'s Items for Sale</h3>
+	<br><br>
+	{% for farm in my_farm %}
+	{{farm.name}}
+	{% endfor %}
+ </body>
+ </html>

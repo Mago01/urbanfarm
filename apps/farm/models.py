@@ -10,5 +10,5 @@ class Farm(models.Model):
 	unit = models.CharField(max_length=100)
 	created_at = models.DateTimeField(auto_now_add=True)
 	price = models.DecimalField(max_digits=5, decimal_places = 2)
-	objects = UserManager()
+    # seller = models.ForeignKey(User, related_name = "sellers")
 
