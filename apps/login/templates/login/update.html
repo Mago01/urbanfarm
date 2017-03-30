@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
  <head>
    <title>login</title>
@@ -7,27 +7,7 @@
   <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
  </head>
  <body>
-  {% if messages %}
-  {% for message in messages %}
-          <div id="warning" style='background-color:red'>
-            <p>{{message}}</p>
-          </div>
-{% endfor %}
-{% endif %}
- 	<div id="log">
-  <form action='/main/login' method='post'>
-    <fieldset>
-  {% csrf_token %}
-    <legend>Login</legend>
- 		<label>email:</label>
- 		<input type="email" name="email">
- 		<label>Password:</label>
- 		<input type="password" name="pass" placeholder="password">
- 		<input id="sub" type='submit' name='submit'>
- 	  </fieldset>
-    </form>
- 	<div id="register">
-  <form action="/main/register" method='post'>
+  <form action="/register" method='post'>
  	  <fieldset>
     {% csrf_token %}
     <legend>Register</legend>
@@ -46,3 +26,4 @@
     </form>
  	</div>
  </body>
+ </html>
