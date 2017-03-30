@@ -11,10 +11,9 @@ def farm (request, id):
 	}
 
 	return render(request, 'farm/farm.html', context)
-	
-def add (request):
 
-	return render(request, 'farm/add.html')
+def add (request):
+    return render(request, 'farm/add.html')
 
 def create (request):
 
