@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <a href="#">My Farm</a>
+      <a href="#">Cart</a>
+      <a href="#">Logout</a>
+    </header>
+      <h1>Items for Sale:</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Item Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{ item.name }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if items.has_other_pages %}
+        <ul class="pagination">
+          {% if items.has_previous %}
+            <li><a href="?page={{ items.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+          {% endif %}
+          {% for i in items.paginator.page_range %}
+            {% if items.number == i %}
+              <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+              <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if items.has_next %}
+            <li><a href="?page={{ items.next_page_number }}">&raquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+          {% endif %}
+        </ul>
+      {% endif %}
+  </body>
+</html>
