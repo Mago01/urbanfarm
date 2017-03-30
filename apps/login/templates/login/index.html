@@ -15,7 +15,7 @@
 {% endfor %}
 {% endif %}
  	<div id="log">
-  <form action='/main/login' method='post'>
+  <form action='/login' method='post'>
     <fieldset>
   {% csrf_token %}
     <legend>Login</legend>
@@ -27,7 +27,7 @@
  	  </fieldset>
     </form>
  	<div id="register">
-  <form action="/main/register" method='post'>
+  <form action="/register" method='post'>
  	  <fieldset>
     {% csrf_token %}
     <legend>Register</legend>

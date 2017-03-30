@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <title>Welcome to the Farm</title>
+   <meta charset="UTF-8">
+	 {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
+ </head>
+ <body>
+ <a href='/logout'>Logout<a>
+ 	<h1>Welcome {{request.session.user}} to UrbanFarm!</h1>
+ 	<form action="http://google.com">
+    	<button>Go to YourFarm</button>
+	</form> 
+	<form action="http://google.com">
+    	<button>Shop the Farm</button>
+	</form> 
+ 
+ </body>
+ </html>
