@@ -1,5 +1,5 @@
 from django.db import models
-from apps.farm.models import Items
+from apps.farm.models import Farm
 
 # Create your models here.
 class Goods(models.Model):
@@ -51,12 +51,12 @@ class User(models.Model):
 	class Meta:
 		db_table = "user"
 
-class procItems(Items):
+class procItems(Farm):
 	class Meta:
 		proxy = True
 class Cart(models.Model):
 	qty = models.IntegerField()
-	items = models.ForeignKey(Items)
+	items = models.ForeignKey(Farm)
 	user = models.ForeignKey(User, primary_key = False)
 	objects = CartManager()
 	class Meta:

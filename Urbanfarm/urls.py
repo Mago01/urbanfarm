@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^', include('apps.login.urls')),
     url(r'^farm', include('apps.farm.urls')),
+    url(r'^checkout', include('apps.shop.urls'))
 ]

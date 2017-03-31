@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from apps.shop.models import Goods, User, Cart, procItems
-from apps.farm.models import Items
+from apps.farm.models import Farm
 from django.core import serializers
 # Create your views here.
 def index(request):
 	request.session['id'] = 3
 	cartCount = len(Cart.objects.filter(user = request.session['id']))
-	products = Items.objects.all()
+	products = Farm.objects.all()
 	contents = {
 		'products': products,
 		'count' : cartCount
