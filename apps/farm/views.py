@@ -24,13 +24,19 @@ def create (request):
 	print '*'*80
 	print request.FILES
 	if len(request.POST['name']) < 1:
-		messages.add_message(request, messages.WARNING, "Item name cannot be blank.")
+		messages.add_message(request, messages.WARNING, "All items must be filled out.")
 		return redirect('/farm/add')
 	if len(request.POST['description']) < 15:
-		messages.add_message(request, messages.WARNING, "Description must be more than 15 characters.")
+		messages.add_message(request, messages.WARNING, "All items must be filled out.")
 		return redirect('/farm/add')
 	if len(request.POST['sold_in']) < 2:
-		messages.add_message(request, messages.WARNING, "Must add amount sold in.")
+		messages.add_message(request, messages.WARNING, "All items must be filled out.")
+		return redirect('/farm/add')
+	if len(request.POST['unit']) < 1:
+		messages.add_message(request, messages.WARNING, "All items must be filled out.")
+		return redirect('/farm/add')
+	if len(request.POST['price']) < 15:
+		messages.add_message(request, messages.WARNING, "All items must be filled out.")
 		return redirect('/farm/add')
 
 	if request.method == 'POST':

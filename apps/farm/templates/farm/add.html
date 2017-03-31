@@ -11,6 +11,13 @@
 		<a href='/logout'>Logout</a>
 	</div>
 	<h3>List your item for sale!</h3>
+	{% if messages %}
+  {% for message in messages %}
+          <div id="warning" style='background-color:red'>
+            <p>{{message}}</p>
+          </div>
+{% endfor %}
+{% endif %}
 	{% block content %}
 	<form enctype="multipart/form-data" action='/farm/create' method='POST'>
 	{% csrf_token %}
