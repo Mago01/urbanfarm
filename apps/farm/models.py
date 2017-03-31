@@ -13,3 +13,4 @@ class Farm(models.Model):
 	image = models.ImageField(upload_to='documents/', blank=True, null=True)
 	price = models.DecimalField(max_digits=5, decimal_places = 2)
 	seller = models.ForeignKey(User, related_name = 'all_sellers')
+	sold_in= models.TextField(max_length=20)

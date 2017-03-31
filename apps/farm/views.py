@@ -41,7 +41,7 @@ def create (request):
 	x = User.objects.get(id=request.session['user_id'])
 	print request.FILES
 	newimage = request.FILES['image']
-	newproduct = Farm.objects.create(name=request.POST['name'], description=request.POST['description'], type_food=request.POST['type_food'], unit=request.POST['unit'], price=request.POST['price'], image = newimage, seller = x)
+	newproduct = Farm.objects.create(name=request.POST['name'], description=request.POST['description'], type_food=request.POST['type_food'], unit=request.POST['unit'], price=request.POST['price'], image = newimage, seller = x, sold_in=request.POST['sold_in'])
 
 	return redirect('/farm', {
         'form': form
