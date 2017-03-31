@@ -29,6 +29,9 @@ def create (request):
 	if len(request.POST['description']) < 15:
 		messages.add_message(request, messages.WARNING, "Description must be more than 15 characters.")
 		return redirect('/farm/add')
+	if len(request.POST['sold_in']) < 2:
+		messages.add_message(request, messages.WARNING, "Must add amount sold in.")
+		return redirect('/farm/add')
 
 	if request.method == 'POST':
 		form = FarmImage(request.FILES)
