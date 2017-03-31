@@ -3,46 +3,72 @@
  <head>
    <title>login</title>
    <meta charset="UTF-8">
-	 {% load staticfiles %}
-  <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
+   {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
  </head>
- <body>
+ <body class="logreg">
   {% if messages %}
   {% for message in messages %}
           <div id="warning" style='background-color:red'>
             <p>{{message}}</p>
-          </div> 
+          </div>
 {% endfor %}
 {% endif %}
- 	<div id="log">
-  <form action='/login' method='post'>
-    <fieldset>
-  {% csrf_token %}
-    <legend>Login</legend>
- 		<label>email:</label>
- 		<input type="email" name="email">
- 		<label>Password:</label>
- 		<input type="password" name="pass" placeholder="password">
- 		<input id="sub" type='submit' name='submit'>
- 	  </fieldset>
-    </form>
- 	<div id="register">
-  <form action="/register" method='post'>
- 	  <fieldset>
+
+  <div id="welcome">
+    <h1>URBAN FARM</h1>
+  </div>
+
+  <div id="left">
+  <div id="intro">
+  <h1>WELCOME TO URBAN FARM</h1>
+  <br>
+  <p>Urban farm is blah blah blah. It was founded in Burbank, California. Blha blah blahb lakbhalbjehshdfkhsdfkjhd. Urban Farm is a community of users that grow vegetables and fruits in their backyard and want to sell within their community.</p>
+  </div>
+  </div>
+
+
+  <div id="right">
+  <div id="register">
+    <form class="form" action="/register" method='post'>
+      <fieldset>
+      {% csrf_token %}
+      <h2>REGISTER</h2>
+      <br>
+      <label>First Name:</label>
+      <input type="text" name="first_name">
+      <br><br>
+      <label>Last Name:</label>
+      <input type="text" name="last_name">
+      <br><br>
+      <label>Email:</label>
+      <input type="email" name="email">
+      <br><br>
+      <label>Password:</label>
+      <input type="password" name="pass">
+      <br><br>
+      <label>Confirm Password:</label>
+      <input type="password" name="cpass">
+      <br><br>
+      <input type='submit' name='submit'>
+      </fieldset>
+      </form>
+  </div>
+  <div id="log">
+    <form class="form" action='/login' method='post'>
+      <fieldset>
     {% csrf_token %}
-    <legend>Register</legend>
- 		<label>First Name:</label>
- 		<input type="text" name="first_name" placeholder="first name">
- 		<label>Last Name:</label>
- 		<input type="text" name="last_name" placeholder="last name">
- 		<label>email:</label>
- 		<input type="email" name="email" placeholder="email">
- 		<label>Password:</label>
- 		<input type="password" name="pass" placeholder="password">
- 		<label>Confirm Password:</label>
- 		<input type="password" name="cpass" placeholder="password">
- 		<input type='submit' name='submit'>
- 	  </fieldset>
-    </form>
- 	</div>
+      <h2>LOGIN</h2>
+      <br>
+      <label>Email:</label>
+      <input type="email" name="email">
+      <br><br>
+      <label>Password:</label>
+      <input type="password" name="pass">
+      <br><br>
+      <input id="sub" type='submit' name='submit'>
+      </fieldset>
+      </form>
+  </div>
+  </div>
  </body>

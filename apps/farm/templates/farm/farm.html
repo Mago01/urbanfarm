@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-	<title>Add a product to the farm!</title>
+	<title>Update product from your farm!</title>
 	</head>
 <body>
 	<style>
@@ -19,12 +19,23 @@
     </div>
 	<h3>{{request.session.user}}'s Items for Sale</h3>
 	<br><br>
-	{% for farm in my_farm %}
-	{{farm.name}}
-	{% if farm.image %}
-		<img src="{{farm.image.url}}" alt="" />
-	{% endif %}
-	{% endfor %}
+	<button><a href='/farm/add'>Update Item</a></button>
+	<br><br>
+	<table>
+        <thead>
+            <tr>
+                <th>Item Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for farm in my_farm.all %}
+            <tr>
+                <td><a href='/farm/update/{{ farm.id }}'>{{ farm.name }}</a></td>
+                <td><img src="{{ farm.image.url }}" alt="" /></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 	<button><a href='/farm/add'>List new item</a></button>
  </body>
  </html>

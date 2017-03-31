@@ -4,7 +4,7 @@
    <title>Welcome to the Farm</title>
    <meta charset="UTF-8">
 	 {% load staticfiles %}
-  <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
  </head>
  <body>
  	<div class='navkey'>
@@ -16,8 +16,7 @@
         </ul>
     </div>
  	<h1>Welcome {{request.session.user}}!</h1>
-<button type=""><a href="/farm/shop">shop</a></button>
-<button type=""><a href="/farm">my farm</a></button>
- 
+<button type="" id="homeButton"><a href="/farm/shop">Shop</a></button>
+<button type="" id="homeButton"><a href="/farm">My Farm</a></button>
  </body>
  </html>

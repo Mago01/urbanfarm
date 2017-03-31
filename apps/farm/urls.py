@@ -8,5 +8,7 @@ urlpatterns = [
     url(r'^/add$', views.add),
     url(r'^/create$', views.create),
     url(r'^/shop$', views.shop),
-    url(r'^/item/(?P<id>\d+)$', views.item)
+    url(r'^/item/(?P<id>\d+)$', views.item),
+    url(r'^/update/(?P<id>\d+)$', views.update),
+    url(r'^/edit$', views.edit)
     ]

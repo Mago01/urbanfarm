@@ -81,3 +81,18 @@ def item(request, id):
 	}
 
 	return render(request, 'farm/item.html', data)
+def update(request, id):
+	data = {
+	    "products" : Farm.objects.filter(id=id)
+	}
+	request.session['item_id']=id
+	return render(request, 'farm/update.html', data)
+def edit(request):
+	x = User.objects.get(id=request.session['user_id'])
+	print x
+	y = Farm.objects.filter(id=request.session['item_id'])
+	y.update(name=request.POST['name'], description=request.POST['description'], type_food=request.POST['type_food'], unit=request.POST['unit'], price=request.POST['price'], seller = x, sold_in=request.POST['sold_in'])
+	# y.save()
+	request.session.pop('item_id')
+	return redirect('/farm')
+

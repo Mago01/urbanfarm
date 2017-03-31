@@ -20,15 +20,16 @@
           </div>
 {% endfor %}
 {% endif %}
-	{% block content %}
-	<form enctype="multipart/form-data" action='/farm/create' method='POST'>
+{% for product in products %}
+	<img src="{{ product.image.url }}" alt="itemforsale"/>
+	<form enctype="multipart/form-data" action='/farm/edit' method='POST'>
 	{% csrf_token %}
 		<p>Item name:</p>
-		<input type='name' name='name' id='name'>
+		<input type='name' name='name' id='name' value='{{product.name}}'>
 		<br>
 		<br>
         <p>Description of your item:</p>
-        <textarea name="description" id="description" placeholder="Tell everyone what you are growing"></textarea>
+        <textarea name="description" id="description" >{{product.description}}</textarea>
         <br>
         <br>
 		Type:
@@ -41,25 +42,20 @@
 		</select>
 		<br>
 		<br>
-		<label for="sold_in">Sold in(i.e. pounds, oz, each...):</label>
-		<input type="text" name="sold_in" placeholder="pounds, oz, each" />
+		<label for="sold_in">Sold in:</label>
+		<input type="text" name="sold_in" value='{{product.sold_in}}' />
 		<br>
 		<br>
 		<label for="unit" >Unit(s):</label>
-		<input type="number" name="unit"/>
+		<input type="number" name="unit" value='{{product.unit}}'/>
 		<br>
 		<br>
 		<label for="price">Price per Unit: $</label>
-		<input type="text" name="price" placeholder="how much does a unit cost" />(USD)
+		<input type="text" name="price" value='{{product.price}}'/>(USD)
 		<br>
 		<br>
-		<label for="image">Image Upload:</label>
-		<input id="image" type="file" name="image"/>
-		{{ form.image }}
-		<br>
-		<br>
-		<input id="submit" type='submit' value='Add to Farm'>
+		<input id="submit" type='submit' value='Update Farm'>
 	</form>
-	{% endblock %}
+ 	{% endfor %}
  </body>
  </html>
