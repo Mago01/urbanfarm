@@ -8,6 +8,14 @@
 	<title>Document</title>
 </head>
 <body>
+	<div class='navkey'>
+        <ul>
+            <li><a href='/home'>Home</a></li>
+            <li><a href='/farm'>MyFarm</a></li>
+            <li><a href='/farm/shop'>Shop</a></li>
+            <li><a href='/logout'>Logout</a></li>
+        </ul>
+    </div>
 	<div>
 		<h1>Products <span class='pull-right'><a href="{% url 'shop_cart' %}">Your cart({{count}})</a></span></h1>
 	</div>
