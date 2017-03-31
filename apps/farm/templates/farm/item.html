@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Featured items</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'farm/css/style.css' %}">
 </head>
-<body>
+<body class="itemfeature">
+  <style>
+    body {
+      font-size: 120%;
+    }
+  </style>
   <div class='navkey'>
         <ul>
             <li><a href='/home'>Home</a></li>
@@ -12,7 +19,9 @@
             <li><a href='/farm/shop'>Shop</a></li>
             <li><a href='/logout'>Logout</a></li>
         </ul>
-    </div>
+  </div>
+  <br>
+  <br>
 <style>
   img {
     max-height: 200px;
@@ -20,7 +29,9 @@
 </style>
 	{% for product in products %}
 	<img src="{{ product.image.url }}" alt="itemforsale"/>
-	<p>Item Name: {{product.name}}</p>
+  <br>
+  <br>
+	<h3>Item Name: {{product.name}}</h3>
 	<p>Description: {{product.description}}</p>
   <p>Sold in: {{product.sold_in}}</p>
 	<p>Unit Price: ${{product.price}}</p>

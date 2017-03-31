@@ -1,9 +1,136 @@
 * {
-	padding:0px;
-	margin:0px;
+	padding: 0;
+	margin: 0;
+	font-family: Didot, serif;
+	}
+
+#homeButton {
+     padding: 20px;
+     font-size: 20px;
+     background-color: white;
+     text-align: center;
+		 border-radius: 15px;
+		 background-color: #889ba0;
+		 text-decoration: none;
+		 text-transform: uppercase;
 }
-.director {
-	width: 100px;
-	display:inline-block;
+
+#homeButton a{
+		text-decoration: none;
+}
+
+#log, #register {
+	opacity: 0.9;
+	text-align: center;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	vertical-align: top
+}
+
+.logreg{
+	font-family: Didot, serif;
+  background-image: url("http://i.imgur.com/sA84Rkz.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+fieldset {
+	border-radius: 15px;
+	padding-top: 25px;
+	border: none;
+	background-color: #c0c8ca;
+	height: 300px;
+}
+
+#welcome {
+	opacity: 0.9;
+	height: 65px;
+	background-color: #c0c8ca;
+}
+
+#welcome h1 {
+	padding-left: 20px;
+	padding-top: 12px;
+	text-align: left;
+}
+
+#intro {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	opacity: 0.9;
+	height: 200px;
+	background-color: #c0c8ca;
+	border-radius: 25px;
+	text-align: center;
+	padding: 100px 20px;
+}
+
+#left, #right {
+	margin-left: 50px;
+	width: 700px;
 	vertical-align: top;
+	display: inline-block;
+}
+
+.navkey ul {
+	list-style: none;
+	background-color: #c0c8ca;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+.navkey li {
+	font-family: 'Oswald', serif;
+	font-size: 20px;
+	line-height: 60px;
+	height: 60px;
+	display: inline-block;
+	width: 120px;
+}
+
+.navkey a {
+	text-decoration: none;
+	color: #fff;
+	display: block;
+	transition: .3s background-color;
+}
+
+.navkey a:hover {
+  background-color: #889ba0;
+}
+
+.navkey a.active {
+	background-color: #fff;
+  color: #444;
+  cursor: default;
+}
+
+th, td {
+	border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+tr:hover {
+  background-color: #c0c8ca ;
+  opacity: 0.8;
+}
+
+.table {
+	margin:auto
+}
+
+.farmhome {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.itemfeature {
+	text-align: center;
+	margin-top: 15px;
 }
