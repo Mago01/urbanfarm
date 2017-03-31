@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+	<link rel= "stylesheet" href = "{% static 'shop/styles.css' %}">
+	<script type='text/javascript' src = '{% static "shop/js/jquery-1.11.3.js"%}'></script>
+	<meta charset="UTF-8">
+	<title>cart</title>
+</head>
+<body>
+	<div class="container">
+		<h2 class = 'row'>Check out</h2>
+		<div class = 'row'>
+			<table class = 'table'>
+				<tr>
+					<th>Qty</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th></th>
+				</tr>
+
+					{% for item in cart %}
+					<tr>
+						<td>{{item.qty}}</td>
+						<td>{{item.items.productName}}</td>
+						<td>{{item.items.price}}</td>
+						<td>
+							<form action="/delete/{{item.id}}/" method="post">
+							{% csrf_token %}
+								<button class="btn btn-danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td></td>
+						<td>Total</td>
+						<td>{{total}}</td>
+						<td></td>
+					</tr>
+			</table>
+		</div><!-- end of rows -->
+		{% if cart %}
+		<div>
+			<h3>Billing Info</h3>
+			<form action="">
+				<p>Name: <input type="text" name="name"></p>
+				<p>Address: <input type="text" name='address'></p>
+				<p>Credit Card: <input type="text" name='number'></p>
+				<button type="submit" class = "btn btn-primary">Order</button>
+			</form>
+
+		</div>
+		{% endif %}
+	</div>
+</body>
+</html>

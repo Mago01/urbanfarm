@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+	<link rel= "stylesheet" href = "{% static 'shop/styles.css' %}">
+	<script type='text/javascript' src = '{% static "shop/js/jquery-1.11.3.js"%}'></script>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<h1>Products <span class='pull-right'><a href="{% url 'shop_cart' %}">Your cart({{count}})</a></span></h1>
+	</div>
+	<div>
+		<table class='table'>
+			<tr>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Qty</th>
+				<th></th>
+			</tr>
+				{% for product in products%}
+			<tr>
+				<form action="{% url 'shop_add' %}" method ='post'>
+					{% csrf_token %}
+				<input type="hidden" name="proId" value='{{product.id}}'>
+				<td>{{product.productName}}</td>
+				<td>{{product.price}}</td>
+				<td>
+					<select name="qty">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</td>
+				<td>
+					<button type='submit' class='btn btn-primary'>Buy</button>
+				</td>
+				</form>
+			</tr>
+				{% endfor %}
+		</table>
+	</div>
+</body>
+</html>
