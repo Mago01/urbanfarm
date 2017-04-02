@@ -103,3 +103,11 @@ img {
   color: #444;
   cursor: default;
 }
+
+.logreg{
+	font-family: Didot, serif;
+  background-image: url("http://i.imgur.com/sA84Rkz.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
