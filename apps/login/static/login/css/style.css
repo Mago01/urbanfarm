@@ -76,6 +76,7 @@ img {
 	padding: 0;
 	margin: 0;
 }
+<<<<<<< HEAD
 #sub, #subreg {
 	margin:10px 0 10px 40px;
 	color: green;
@@ -84,6 +85,8 @@ img {
 	height: 30px;
 	font-size: 20px;
 }
+=======
+>>>>>>> 33b8ee8cd24246f1c78d0b2ff701db1e77241e0b
 
 .navkey li {
 	font-family: 'Oswald', serif;
@@ -111,6 +114,7 @@ img {
   cursor: default;
 }
 
+<<<<<<< HEAD
 #log, #register {
 	width:600px;
 border-radius: 10px;
@@ -122,3 +126,12 @@ border:solid 1px black;
 #right {
 	margin-top: 50px;
 }
+=======
+.logreg{
+	font-family: Didot, serif;
+  background-image: url("http://i.imgur.com/sA84Rkz.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+>>>>>>> 33b8ee8cd24246f1c78d0b2ff701db1e77241e0b
