@@ -2,8 +2,15 @@
 <html lang="en">
 	<head>
 	<title>Add a product to the farm!</title>
+	{% load staticfiles %}
+ 	<link rel="stylesheet" href="{% static 'farm/css/style.css' %}">
 	</head>
 <body>
+<style>
+	img {
+		max-height: 200px;
+	}
+</style>
 	<div class='navkey'>
         <ul>
             <li><a href='/home'>Home</a></li>

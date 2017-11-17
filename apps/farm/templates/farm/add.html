@@ -2,8 +2,25 @@
 <html lang="en">
 	<head>
 	<title>Add a product to the farm!</title>
+	{% load staticfiles %}
+ 	<link rel="stylesheet" href="{% static 'farm/css/style.css' %}">
 	</head>
 <body>
+	<style>
+		body {
+			text-align: center;
+		}
+
+		.navkey {
+			margin-bottom: 20px;
+		}
+
+		textarea {
+			width: 200px;
+			height: 200px;
+		}
+
+	</style>
 	<div class='navkey'>
         <ul>
             <li><a href='/home'>Home</a></li>
@@ -12,7 +29,7 @@
             <li><a href='/logout'>Logout</a></li>
         </ul>
     </div>
-	<h3>List your item for sale!</h3>
+	<h2>List your item for sale!</h2>
 	{% if messages %}
   {% for message in messages %}
           <div id="warning" style='background-color:red'>
@@ -28,6 +45,7 @@
 		<br>
 		<br>
         <p>Description of your item:</p>
+				<br>
         <textarea name="description" id="description" placeholder="Tell everyone what you are growing"></textarea>
         <br>
         <br>
@@ -41,7 +59,7 @@
 		</select>
 		<br>
 		<br>
-		<label for="sold_in">Sold in(i.e. pounds, oz, each...):</label>
+		<label for="sold_in">Sold in:</label>
 		<input type="text" name="sold_in" placeholder="pounds, oz, each" />
 		<br>
 		<br>

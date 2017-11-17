@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
 	<head>
-	<title>Update product from your farm!</title>
+	<title>My Farm</title>
+	{% load staticfiles %}
+ 	<link rel="stylesheet" href="{% static 'farm/css/style.css' %}">
 	</head>
 <body>
 	<style>
@@ -16,26 +18,37 @@
             <li><a href='/farm/shop'>Shop</a></li>
             <li><a href='/logout'>Logout</a></li>
         </ul>
-    </div>
-	<h3>{{request.session.user}}'s Items for Sale</h3>
+  </div>
+	<div class="farmhome">
+	<h1>{{request.session.user}}'s Items for Sale</h1>
 	<br><br>
-	<button><a href='/farm/add'>Update Item</a></button>
+	<button id="homeButton"><a href='/farm/add'>Add Item</a></button>
 	<br><br>
-	<table>
+</div>
+	<table class="table">
         <thead>
             <tr>
+								<th>Image</th>
                 <th>Item Name</th>
+								<th>Units</th>
+								<th>Price</th>
             </tr>
         </thead>
         <tbody>
             {% for farm in my_farm.all %}
             <tr>
+								<td><img src="{{ farm.image.url }}" alt="" /></td>
                 <td><a href='/farm/update/{{ farm.id }}'>{{ farm.name }}</a></td>
-                <td><img src="{{ farm.image.url }}" alt="" /></td>
+								<td>{{ farm.unit }}</td>
+								<td>${{ farm.price }} USD</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-	<button><a href='/farm/add'>List new item</a></button>
+		<div class="farmhome">
+		<br><br>
+		<button id="homeButton"><a href='/farm/add'>Add Item</a></button>
+		<br><br>
+	</div>
  </body>
  </html>
