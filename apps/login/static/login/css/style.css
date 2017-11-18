@@ -69,14 +69,7 @@ img {
 	display: inline-block;
 }
 
-.navkey ul {
-	list-style: none;
-	background-color: #c0c8ca;
-	text-align: center;
-	padding: 0;
-	margin: 0;
-}
-<<<<<<< HEAD
+
 #sub, #subreg {
 	margin:10px 0 10px 40px;
 	color: green;
@@ -85,8 +78,14 @@ img {
 	height: 30px;
 	font-size: 20px;
 }
-=======
->>>>>>> 33b8ee8cd24246f1c78d0b2ff701db1e77241e0b
+
+.navkey ul {
+	list-style: none;
+	background-color: #c0c8ca;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
 
 .navkey li {
 	font-family: 'Oswald', serif;
@@ -113,7 +112,6 @@ img {
   color: #444;
   cursor: default;
 }
-
 
 #right {
 	margin-top: 50px;
