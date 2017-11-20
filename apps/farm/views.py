@@ -21,22 +21,17 @@ def add (request):
     return render(request, 'farm/add.html')
 
 def create (request):
-	print '*'*80
-	print request.FILES
-	if len(request.POST['name']) < 1:
-		messages.add_message(request, messages.WARNING, "All items must be filled out.")
-		return redirect('/farm/add')
-	if len(request.POST['description']) < 15:
-		messages.add_message(request, messages.WARNING, "All items must be filled out.")
-		return redirect('/farm/add')
+	if len(request.POST['name']) < 2:
+		messages.add_message(request, messages.WARNING, "Name must be filled out.")
+	if len(request.POST['description']) < 10:
+		messages.add_message(request, messages.WARNING, "A description must be filled out.")
 	if len(request.POST['sold_in']) < 2:
-		messages.add_message(request, messages.WARNING, "All items must be filled out.")
-		return redirect('/farm/add')
+		messages.add_message(request, messages.WARNING, "Sold in must be filled out.")
 	if len(request.POST['unit']) < 1:
-		messages.add_message(request, messages.WARNING, "All items must be filled out.")
-		return redirect('/farm/add')
-	if len(request.POST['price']) < 15:
-		messages.add_message(request, messages.WARNING, "All items must be filled out.")
+		messages.add_message(request, messages.WARNING, 'Number of unit(s) must be filled out.')
+	if len(request.POST['price']) < 1:
+		messages.add_message(request, messages.WARNING, "Price must be entered.")
+	if messages:
 		return redirect('/farm/add')
 
 	if request.method == 'POST':
