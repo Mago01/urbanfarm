@@ -1,142 +1,63 @@
 <!doctype html>
 <html lang="en">
  <head>
-   <title>login</title>
+   <title>Login</title>
    <meta charset="UTF-8">
    {% load staticfiles %}
   <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
-  <style>
-  * {
-	padding: 0;
-	margin: 0;
-	background-color: c0c8ca;
-	}
-
-#log, #register {
-	opacity: 0.9;
-	text-align: center;
-	margin-top: 50px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 500px;
-	vertical-align: top
-}
-
-
-body {
-	font-family: Didot, serif;
-    background-image: url("http://i.imgur.com/sA84Rkz.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-fieldset {
-	border-radius: 15px;
-	padding-top: 25px;
-	border: none;
-	background-color: #c0c8ca;
-	height: 300px;
-}
-
-#welcome {
-	opacity: 0.9;
-	height: 65px;
-	background-color: #c0c8ca;
-}
-
-#welcome h1 {
-	padding-left: 20px;
-	padding-top: 12px;
-	text-align: left;
-}
-
-
-#intro {
-	width: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 50px;
-	opacity: 0.9;
-	height: 200px;
-	background-color: #c0c8ca;
-	border-radius: 25px;
-	text-align: center;
-	padding: 100px 20px;
-}
-
-
-#left, #right {
-	margin-left: 50px;
-	width: 550px;
-	vertical-align: top;
-	display: inline-block;
-}
-</style>
+  <link rel="stylesheet" href="{% static 'login/css/bootstrap.min.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="{% static 'login/js/bootstrap.min.css'}"></script>
  </head>
  <body class="logreg">
   {% if messages %}
   {% for message in messages %}
-          <div id="warning" style='background-color:red'>
-            <p>{{message}}</p>
-          </div>
-{% endfor %}
-{% endif %}
+    <div id="warning" style="background-color:red">
+      <p>{{message}}</p>
+    </div>
+  {% endfor %}
+  {% endif %}
 
-  <div id="welcome">
-    <h1>URBAN FARM</h1>
-  </div>
-<div class="welcomehome">
-  <div class="main">
-  <div id="left">
-  <div id="intro">
-  <h1>WELCOME TO URBAN FARM</h1>
-  <br>
-  <p>Urban farm is a site dedicated to keeping food local. It was founded in Burbank, California, Urban Farm is a community of users that grow vegetables and fruits in their backyard and want to sell within their community.</p>
-  </div>
-  </div>
-
-
-  <div id="right">
-  <div id="register">
-    <form class="form" action="/register" method='post'>
-      
-      {% csrf_token %}
-      <h2>REGISTER</h2>
-      <br>
-      <label>First Name:</label>
-      <input type="text" name="first_name">
-      <br><br>
-      <label>Last Name:</label>
-      <input type="text" name="last_name">
-      <br><br>
-      <label>Email:</label>
-      <input type="email" name="email">
-      <br><br>
-      <label>Password:</label>
-      <input type="password" name="pass">
-      <br><br>
-      <label>Confirm Password:</label>
-      <input type="password" name="cpass">
-      <br><br>
-      <input id="subreg" type='submit' name='submit'>
-      </form>
-  </div>
-  <div id="log">
-    <form class="form" action='/login' method='post'>
-    {% csrf_token %}
-      <h2>LOGIN</h2>
-      <br>
-      <label>Email:</label>
-      <input type="email" name="email">
-      <br><br>
-      <label>Password:</label>
-      <input type="password" name="pass">
-      <br><br>
-      <input id="sub" type='submit' name='submit'>
-      </form>
-  </div>
-  </div>
-
+    <div class="col-md-12" id="welcome">
+      <h1>URBAN FARM</h1>
+    </div>
+    <div class="welcomehome">
+      <div class="main col-md-12">
+        <div class="col-sm-12 col-md-5 col-md-offset-1" id="left">
+          <h1>WELCOME TO URBAN FARM</h1>
+          <p>Urban farm is a site dedicated to keeping food local. It was founded in Burbank, California, Urban Farm is a community of users that grow vegetables and fruits in their backyard and want to sell within their community.</p>
+        </div>
+      <div class="col-sm-12 col-md-3 col-md-offset-1" id="right">
+        <div id="register">
+          <form class="form" action="/register" method="post">
+            {% csrf_token %}
+            <h2>REGISTER</h2>
+            <label>First Name:</label>
+            <input type="text" name="first_name">
+            <label>Last Name:</label>
+            <input type="text" name="last_name">
+            <label>Email:</label>
+            <input type="email" name="email">
+            <label>Password:</label>
+            <input type="password" name="pass">
+            <label>Confirm Password:</label>
+            <input type="password" name="cpass">
+            <input id="subreg" type="submit" name="submit">
+          </form>
+        </div>
+        <div id="log">
+          <form class="form" action="/login" method="post">
+            {% csrf_token %}
+            <h2>LOGIN</h2>
+            <label>Email:</label>
+            <input type="email" name="email">
+            <label>Password:</label>
+            <input type="password" name="pass">
+            <input id="sub" type="submit" name="submit">
+          </form>
+        </div>
+      </div>
+    </div>
+   </div>
  </body>
-
+</html>
