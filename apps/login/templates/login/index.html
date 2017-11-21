@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
   <link rel="stylesheet" href="{% static 'login/css/bootstrap.min.css' %}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="{% static 'login/js/bootstrap.min.css'}"></script>
+  <script src="{% static 'login/js/bootstrap.min.js' %}"></script>
  </head>
  <body class="logreg">
   {% if messages %}
@@ -27,8 +27,17 @@
           <h1>WELCOME TO URBAN FARM</h1>
           <p>Urban farm is a site dedicated to keeping food local. It was founded in Burbank, California, Urban Farm is a community of users that grow vegetables and fruits in their backyard and want to sell within their community.</p>
         </div>
-      <div class="col-sm-12 col-md-3 col-md-offset-1" id="right">
-        <div id="register">
+      <div class="container">
+      <div class="tab-content clearfix col-sm-12 col-md-3 col-md-offset-1" id="right">
+        <ul class='nav nav-pills pillbox'>
+        <li class='active'>
+          <a href='#register' data-toggle='tab'>Register</a>
+        </li>
+        <li>
+          <a href='#log' data-toggle='tab'>Log in</a>
+        </li>
+      </ul>
+        <div id="register" class="tab-pane active">
           <form class="form" action="/register" method="post">
             {% csrf_token %}
             <h2>REGISTER</h2>
@@ -45,7 +54,7 @@
             <input id="subreg" type="submit" name="submit">
           </form>
         </div>
-        <div id="log">
+        <div id="log" class="tab-pane">
           <form class="form" action="/login" method="post">
             {% csrf_token %}
             <h2>LOGIN</h2>
@@ -58,6 +67,7 @@
         </div>
       </div>
     </div>
+  </div>
    </div>
  </body>
 </html>
