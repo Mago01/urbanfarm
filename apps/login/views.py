@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import User
 def index (request):
+
+	if 'user' in request.session: #this section is to redirect if a user is already logged in
+		return redirect('/home')
 	return render(request, 'login/index.html')
 def login (request):
 	result = User.objects.login(request.POST.copy())

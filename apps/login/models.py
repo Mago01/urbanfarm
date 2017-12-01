@@ -43,6 +43,8 @@ class UserManager(models.Manager):
 			error.append("Email is not registered.")
 		return {'error':error}
 
+
+
 class User(models.Model):
 	first_name=models.CharField(max_length=45)
 	last_name=models.CharField(max_length=45)
